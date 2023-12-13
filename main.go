@@ -2,8 +2,6 @@ package main
 
 import (
 	"blackjack/deck"
-
-	"github.com/davecgh/go-spew/spew"
 )
 
 func main() {
@@ -11,7 +9,4 @@ func main() {
 	player := deck.NewPlayer()
 
 	dealer.Setup(player)
-
-	spew.Dump(dealer.Hand())
-	spew.Dump(player.Hand())
 }
