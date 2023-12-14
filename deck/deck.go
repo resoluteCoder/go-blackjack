@@ -23,14 +23,15 @@ func ConvertValueToWorth(value string) int {
 	if slices.Contains(faceCard, value) {
 		worth = 10
 	} else {
+		if value == "Ace" {
+			worth = 11
+			return worth
+		}
 		num, err := strconv.Atoi(value)
 		if err != nil {
-			fmt.Println("error in converting string to int")
+			fmt.Printf("error in converting string: %s to int", value)
 		}
 		worth = num
-	}
-	if value == "Ace" {
-		worth = 11
 	}
 	return worth
 }

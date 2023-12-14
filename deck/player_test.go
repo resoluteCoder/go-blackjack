@@ -72,6 +72,15 @@ func TestCalculateHandValue(t *testing.T) {
 			},
 			expectedValue: 13,
 		},
+		{
+			name: "Total of 30",
+			hand: []*deck.Card{
+				{Suit: "Hearts", Value: "King", Worth: 10},
+				{Suit: "Spades", Value: "King", Worth: 10},
+				{Suit: "Clubs", Value: "King", Worth: 10},
+			},
+			expectedValue: 30,
+		},
 	}
 
 	for _, testCase := range handValueTestCases {

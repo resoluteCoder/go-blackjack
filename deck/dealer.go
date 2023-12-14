@@ -1,8 +1,9 @@
 package deck
 
 type Dealer struct {
-	deck *Deck
-	hand []*Card
+	deck         *Deck
+	hand         []*Card
+	CurrentWorth int
 }
 
 func NewDealer() *Dealer {
@@ -20,6 +21,8 @@ func (d *Dealer) Setup(p *Player) {
 	p.Hit(d.DealCard())
 	d.Hit()
 	p.Hit(d.DealCard())
+	p.CurrentWorth = CalculateHandWorth(p.hand)
+	d.CurrentWorth = CalculateHandWorth(d.hand)
 }
 
 func (d *Dealer) DealCard() *Card {
