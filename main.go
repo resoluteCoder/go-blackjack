@@ -48,9 +48,6 @@ func main() {
 
 	ui.DisplayHeading("Player", player.CurrentWorth)
 	ui.DisplayHand(player.Hand(), "player")
-	// repeat until stand
-	// have dealer hit until 21, bust, or beats the player
-	// finish
 	if !player.Bust {
 		for {
 			time.Sleep(time.Second * 1)

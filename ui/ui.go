@@ -6,19 +6,19 @@ import (
 )
 
 func DisplayHeading(role string, value int) {
-	// if role == "Dealer" {
-	// 	fmt.Printf("%s\n", role)
-	// 	return
-	// }
+	if role == "Dealer" {
+		fmt.Printf("%s\n", role)
+		return
+	}
 	fmt.Printf("%s - Hand value: %d\n", role, value)
 }
 
 func DisplayHand(hand []*deck.Card, role string) {
-	for _, card := range hand {
-		// if role == "dealer" && index == 0 {
-		// 	fmt.Println("[ Hidden ]")
-		// 	continue
-		// }
+	for index, card := range hand {
+		if role == "dealer" && index == 0 {
+			fmt.Println("[ Hidden ]")
+			continue
+		}
 		fmt.Printf("%s of %s\n", card.Value, card.Suit)
 	}
 	fmt.Println()
