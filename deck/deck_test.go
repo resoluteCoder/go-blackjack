@@ -48,3 +48,35 @@ func TestGetTopCardFromDeck(t *testing.T) {
 		t.Error("Failed to remove top card")
 	}
 }
+
+func TestConvertValueToWorth(t *testing.T) {
+	handValueTestCases := []struct {
+		name          string
+		value         string
+		expectedWorth int
+	}{
+		{
+			name:          "Value of 3 worth of 3",
+			value:         "3",
+			expectedWorth: 3,
+		},
+		{
+			name:          "Value of King worth of 10",
+			value:         "King",
+			expectedWorth: 10,
+		},
+		{
+			name:          "Value of Ace worth of 11",
+			value:         "Ace",
+			expectedWorth: 11,
+		},
+	}
+	for _, testCase := range handValueTestCases {
+		t.Run(testCase.name, func(t *testing.T) {
+			worth := deck.ConvertValueToWorth(testCase.value)
+			if worth != testCase.expectedWorth {
+				t.Errorf("expected: %d, received: %d", testCase.expectedWorth, worth)
+			}
+		})
+	}
+}

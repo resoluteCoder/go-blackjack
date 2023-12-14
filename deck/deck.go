@@ -1,17 +1,39 @@
 package deck
 
 import (
+	"fmt"
 	"math/rand"
 	"slices"
+	"strconv"
 )
 
 type Card struct {
 	Suit  string
 	Value string
+	Worth int
 }
 
 type Deck struct {
 	cards []*Card
+}
+
+func ConvertValueToWorth(value string) int {
+	var worth int
+	faceCard := []string{"Jack", "Queen", "King"}
+	if slices.Contains(faceCard, value) {
+		worth = 10
+	} else {
+		if value == "Ace" {
+			worth = 11
+			return worth
+		}
+		num, err := strconv.Atoi(value)
+		if err != nil {
+			fmt.Printf("error in converting string: %s to int", value)
+		}
+		worth = num
+	}
+	return worth
 }
 
 func (d *Deck) Init() {
@@ -22,6 +44,7 @@ func (d *Deck) Init() {
 			d.cards = append(d.cards, &Card{
 				Suit:  suit,
 				Value: value,
+				Worth: ConvertValueToWorth(value),
 			})
 		}
 	}

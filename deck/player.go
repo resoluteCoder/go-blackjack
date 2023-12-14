@@ -1,7 +1,9 @@
 package deck
 
 type Player struct {
-	hand []*Card
+	hand         []*Card
+	Bust         bool
+	CurrentWorth int
 }
 
 func NewPlayer() *Player {
